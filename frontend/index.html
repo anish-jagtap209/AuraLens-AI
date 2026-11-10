@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuraLens AI — Autonomous Wireframe-to-Code Synthesizer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="ambient-glow"></div>
+    
+    <header class="navbar">
+        <div class="nav-brand">
+            <span class="brand-badge">AI</span>
+            <span>AuraLens<span class="accent">.ai</span></span>
+        </div>
+        <div class="nav-actions">
+            <button id="historyToggleBtn" class="nav-btn">View History</button>
+            <div class="nav-status"><span class="status-dot"></span> System Online</div>
+        </div>
+    </header>
+
+    <!-- History Sidebar -->
+    <aside id="historySidebar" class="sidebar closed">
+        <div class="sidebar-header">
+            <h2>Recent Generations</h2>
+            <button id="closeHistoryBtn" class="close-btn">&times;</button>
+        </div>
+        <div id="historyList" class="history-list">
+            <!-- History items will be injected here -->
+        </div>
+    </aside>
+
+    <main class="main-container">
+        <section class="hero-section">
+            <h1>Transform Wireframes Into Production Code</h1>
+            <p>Select your stack, upload a sketch, and let the multimodal engine build it.</p>
+        </section>
+
+        <section class="workspace">
+            <div class="upload-card">
+                <div class="framework-selector">
+                    <label for="framework">Target Framework:</label>
+                    <select id="framework" class="select-box">
+                        <option value="html">HTML5 / CSS3</option>
+                        <option value="react">React + Tailwind CSS</option>
+                        <option value="vue">Vue.js</option>
+                    </select>
+                </div>
+
+                <div class="dropzone" id="dropzone">
+                    <input type="file" id="fileInput" accept="image/*">
+                    <div class="dropzone-content">
+                        <svg class="upload-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
+                        <h3>Drag & drop your wireframe here</h3>
+                        <button class="browse-btn">Browse Files</button>
+                    </div>
+                </div>
+                <div id="filePreviewContainer" class="hidden">
+                    <img id="filePreview" src="" alt="Uploaded wireframe preview">
+                    <button id="removeFile" class="remove-btn">Remove file</button>
+                </div>
+            </div>
+
+            <div id="loading" class="loading-state hidden">
+                <div class="spinner"></div>
+                <p>Synthesizing UI components through neural vision pipeline...</p>
+            </div>
+
+            <div id="outputContainer" class="output-card hidden">
+                <div class="output-header">
+                    <span id="outputBadge" class="brand-badge">HTML</span>
+                    <button id="copyBtn" class="copy-btn">Copy Code</button>
+                </div>
+                <pre><code id="codeOutput"></code></pre>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
