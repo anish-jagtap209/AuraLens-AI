@@ -64,10 +64,10 @@ async function processFile(file) {
     formData.append('framework', frameworkSelect.value); // Send chosen framework
 
     try {
-        const response = await fetch('http://localhost:8000/api/v1/generate-code', {
-            method: 'POST',
-            body: formData
-        });
+        const response = await fetch('https://auralens-backend.onrender.com/api/v1/generate-code', {
+        method: 'POST',
+        body: formData
+        }); 
         
         if (!response.ok) throw new Error('Synthesis failed');
         
